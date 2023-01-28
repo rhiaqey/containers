@@ -13,5 +13,5 @@ RUN mkdir -p /var/lib/apt/lists/partial && \
 
 USER 1001
 
-COPY --chown=1001:1001 tmp/redis-${VERSION}/src/redis-server    /opt/bitnami/redis/bin/
-COPY --chown=1001:1001 tmp/redis-${VERSION}/src/redis-sentinel  /opt/bitnami/redis/bin/
+COPY --chown=1001:1001 ./tmp/redis-${VERSION}/src/redis-server    /opt/bitnami/redis/bin/
+COPY --chown=1001:1001 ./tmp/redis-${VERSION}/src/redis-sentinel  /opt/bitnami/redis/bin/
