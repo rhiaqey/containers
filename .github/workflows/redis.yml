@@ -17,7 +17,7 @@ env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
-  IMAGE_NAME: redis
+  IMAGE_NAME: rhiaqey/redis
   # Redis version
   VERSION: 7.0.8
   # Bitnami docker tag
