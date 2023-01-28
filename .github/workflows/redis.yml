@@ -8,7 +8,7 @@ name: Docker
 on:
   push:
     branches: [ "master" ]
-    tags: [ 'v*.*.*' ]
+    #tags: [ 'v*.*.*' ]
     #paths:
       #- 'redis'
   pull_request:
