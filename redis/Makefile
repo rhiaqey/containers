@@ -1,5 +1,6 @@
 # BRANCH=7.0.8
 # BITNAMI_TAG=7.0.8-debian-11-r0
+export BRANCH = ${VERSION}
 
 .PHONY: compile
 compile:
