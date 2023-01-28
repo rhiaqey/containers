@@ -1,8 +1,8 @@
 ARG TAG
 
-ARG VERSION
-
 FROM bitnami/redis:${TAG}
+
+ARG VERSION
 
 USER root
 
