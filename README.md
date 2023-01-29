@@ -2,7 +2,7 @@
 
 A collection of customized containers
 
-* Redis 7.0
+* Redis 7.0.8
 
 ## Changelog
 

@@ -1,17 +1,8 @@
 ARG TAG
 
+# https://github.com/bitnami/containers/blob/main/bitnami/redis/7.0/debian-11/Dockerfile
 FROM bitnami/redis:${TAG}
 
 ARG VERSION
 
-USER root
-
-RUN mkdir -p /var/lib/apt/lists/partial && \
-    apt-get update -y && \
-    apt-get upgrade -y && \
-    apt-get install vim -y
-
-USER 1001
-
-COPY --chown=1001:1001 ./tmp/redis-${VERSION}/src/redis-server    /opt/bitnami/redis/bin/
-COPY --chown=1001:1001 ./tmp/redis-${VERSION}/src/redis-sentinel  /opt/bitnami/redis/bin/
+COPY --chown=1001:1001 ./tmp/redis-${VERSION}/src/redis /opt/bitnami/redis/bin/
