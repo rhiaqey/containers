@@ -19,7 +19,7 @@ env:
   # Redis version
   VERSION: 7.0.8
   # Bitnami docker tag
-  BITNAMI_TAG: 7.0.8-debian-11-r0
+  BITNAMI_TAG: 7.0.8-debian-11-r5
 
 defaults:
   run:
