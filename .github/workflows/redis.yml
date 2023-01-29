@@ -8,8 +8,6 @@ name: Docker
 on:
   push:
     branches: [ "master" ]
-    paths:
-      - 'redis'
   pull_request:
     branches: [ "master" ]
 
