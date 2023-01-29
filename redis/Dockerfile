@@ -5,4 +5,4 @@ FROM bitnami/redis:${TAG}
 
 ARG VERSION
 
-COPY --chown=1001:1001 ./tmp/redis-${VERSION}/src/redis /opt/bitnami/redis/bin/
+COPY --chown=1001:1001 ./tmp/redis-${VERSION}/src/redis-server /opt/bitnami/redis/bin/
