@@ -17,9 +17,9 @@ env:
   # github.repository as <account>/<repo>
   IMAGE_NAME: rhiaqey/redis
   # Redis version
-  VERSION: 7.0.9
+  VERSION: 7.0.10
   # Bitnami docker tag
-  BITNAMI_TAG: 7.0.9-debian-11-r4
+  BITNAMI_TAG: 7.0.10-debian-11-r1
 
 defaults:
   run:
