@@ -18,8 +18,6 @@ env:
   IMAGE_NAME: rhiaqey/redis
   # Redis version
   VERSION: 7.0.10
-  # Bitnami docker tag
-  BITNAMI_TAG: 7.0.10-debian-11-r6
 
 defaults:
   run:
@@ -85,7 +83,6 @@ jobs:
           cache-to: type=gha,mode=max
           build-args: |
             VERSION=${{ env.VERSION }}
-            TAG=${{ env.BITNAMI_TAG }}
 
       # Sign the resulting Docker image digest except on PRs.
       # This will only write to the public Rekor transparency log when the Docker
