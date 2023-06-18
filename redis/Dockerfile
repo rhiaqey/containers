@@ -1,5 +1,5 @@
 # https://github.com/bitnami/containers/blob/main/bitnami/redis/7.0/debian-11/Dockerfile
-FROM bitnami/redis:7.0.11-debian-11-r0
+FROM bitnami/redis:7.0.11-debian-11-r21
 
 ARG VERSION
 
