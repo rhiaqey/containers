@@ -1,5 +1,5 @@
 # https://github.com/bitnami/containers/blob/main/bitnami/redis-sentinel/7.0/debian-11/Dockerfile
-FROM bitnami/redis-sentinel:7.0.11-debian-11-r20
+FROM bitnami/redis-sentinel:7.0.12-debian-11-r13
 
 ARG VERSION
 
