@@ -1,6 +1,28 @@
-# https://github.com/bitnami/containers/blob/main/bitnami/redis-sentinel/7.0/debian-11/Dockerfile
+FROM docker.io/bitnami/minideb:bullseye as builder
+
+RUN apt-get update && \
+    apt-get upgrade -y
+
+RUN install_packages \
+      ca-certificates \
+      curl \
+      libgomp1 \
+      libssl1.1 \
+      procps \
+      git \
+      make \
+      gcc \
+      build-essential \
+      pkg-config \
+      apt-utils \
+      tcl
+
+RUN git clone --depth 1 --branch 7.0.12 https://github.com/redis/redis.git /tmp/redis-7.0.12
+
+RUN cd /tmp/redis-7.0.12 && \
+    make MALLOC=jemalloc && \
+    make test
+
 FROM bitnami/redis-sentinel:7.0.12-debian-11-r13
 
-ARG VERSION
-
-COPY --chown=1001:1001 ./tmp/redis-${VERSION}/src/redis-sentinel /opt/bitnami/redis/bin/
+COPY --from=builder --chown=1001:1001 /tmp/redis-7.0.12/src/redis-sentinel /opt/bitnami/redis/bin/

@@ -14,11 +14,14 @@ RUN install_packages \
       gcc \
       build-essential \
       pkg-config \
-      apt-utils
+      apt-utils \
+      tcl
 
 RUN git clone --depth 1 --branch 7.0.12 https://github.com/redis/redis.git /tmp/redis-7.0.12
 
-RUN cd /tmp/redis-7.0.12 && make MALLOC=jemalloc
+RUN cd /tmp/redis-7.0.12 && \
+    make MALLOC=jemalloc && \
+    make test
 
 FROM bitnami/redis:7.0.12-debian-11-r13
 
