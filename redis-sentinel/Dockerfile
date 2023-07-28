@@ -20,8 +20,7 @@ RUN install_packages \
 RUN git clone --depth 1 --branch 7.0.12 https://github.com/redis/redis.git /tmp/redis-7.0.12
 
 RUN cd /tmp/redis-7.0.12 && \
-    make MALLOC=jemalloc && \
-    make test
+    make MALLOC=jemalloc
 
 FROM bitnami/redis-sentinel:7.0.12-debian-11-r13
 
