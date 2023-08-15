@@ -4,10 +4,14 @@ A collection of customized containers
 
 | Name              | Version | Status |
 | :---              |:-------:|          ---: |
-| Bitnami Redis             | 7.0.12  | [![Redis](https://github.com/rhiaqey/containers/actions/workflows/redis.yml/badge.svg)](https://github.com/rhiaqey/containers/actions/workflows/redis.yml)   |
-| Bitnami Redis sentinel    | 7.0.12  | [![Redis sentinel](https://github.com/rhiaqey/containers/actions/workflows/redis-sentinel.yml/badge.svg)](https://github.com/rhiaqey/containers/actions/workflows/redis-sentinel.yml)      |
+| Bitnami Redis             |  7.2.0  | [![Redis](https://github.com/rhiaqey/containers/actions/workflows/redis.yml/badge.svg)](https://github.com/rhiaqey/containers/actions/workflows/redis.yml)   |
+| Bitnami Redis sentinel    |  7.2.0  | [![Redis sentinel](https://github.com/rhiaqey/containers/actions/workflows/redis-sentinel.yml/badge.svg)](https://github.com/rhiaqey/containers/actions/workflows/redis-sentinel.yml)      |
 
 ## Changelog
+
+### 1.0.6
+* Compile redis image based on 7.2.0
+* Compile redis-sentinel image based on 7.2.0
 
 ### 1.0.5
 * Compile redis sentinel image based on 7.0.12
