@@ -17,11 +17,11 @@ RUN install_packages \
       apt-utils \
       tcl
 
-RUN git clone --depth 1 --branch 7.2.1 https://github.com/redis/redis.git /tmp/redis-7.2.1
+RUN git clone --depth 1 --branch 7.2.3 https://github.com/redis/redis.git /tmp/redis-7.2.3
 
-RUN cd /tmp/redis-7.2.1 && \
+RUN cd /tmp/redis-7.2.3 && \
     make MALLOC=jemalloc
 
-FROM bitnami/redis:7.2.1-debian-11-r26
+FROM bitnami/redis:7.2.3-debian-11-r1
 
-COPY --from=builder --chown=1001:1001 /tmp/redis-7.2.1/src/redis-server /opt/bitnami/redis/bin/
+COPY --from=builder --chown=1001:1001 /tmp/redis-7.2.3/src/redis-server /opt/bitnami/redis/bin/
