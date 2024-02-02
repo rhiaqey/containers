@@ -9,7 +9,7 @@ A collection of customized containers
 
 ## Changelog
 
-### 1.0.8
+### 1.0.9
 * Compile redis image based on 7.2.4
 * Compile redis-sentinel image based on 7.2.4
 
