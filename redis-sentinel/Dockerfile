@@ -1,4 +1,8 @@
+ARG VERSION
+
 FROM docker.io/bitnami/minideb:bullseye as builder
+
+ARG VERSION
 
 RUN apt-get update && \
     apt-get upgrade -y
@@ -17,11 +21,13 @@ RUN install_packages \
       apt-utils \
       tcl
 
-RUN git clone --depth 1 --branch 7.2.4 https://github.com/redis/redis.git /tmp/redis-7.2.4
+RUN git clone --depth 1 --branch ${VERSION} https://github.com/redis/redis.git /tmp/redis-${VERSION}
 
-RUN cd /tmp/redis-7.2.4 && \
+RUN cd /tmp/redis-${VERSION} && \
     make MALLOC=jemalloc
 
-FROM bitnami/redis-sentinel:7.2.4-debian-11-r6
+FROM bitnami/redis-sentinel:${VERSION}
 
-COPY --from=builder --chown=1001:1001 /tmp/redis-7.2.4/src/redis-sentinel /opt/bitnami/redis/bin/
+ARG VERSION
+
+COPY --from=builder --chown=1001:1001 /tmp/redis-${VERSION}/src/redis-sentinel /opt/bitnami/redis/bin/

@@ -1,0 +1,49 @@
+name: PR Merge
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  CI: true
+
+jobs:
+  Setup:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        containers: [
+          {name: "redis", image: "rhiaqey/redis", version: "7.2.4"},
+          {name: "redis-sentinel", image: "rhiaqey/redis-sentinel", version: "7.2.4"}
+        ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Log into registry
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      # Extract metadata (tags, labels) for Docker
+      # https://github.com/docker/metadata-action
+      - name: Extract Docker metadata
+        id: meta
+        uses: docker/metadata-action@8e5442c4ef9f78752691e2d8f8d19755c6f78e81
+        with:
+          images: ${{ matrix.containers.image }}
+
+      # Build and push Docker image with Buildx (don't push on PR)
+      # https://github.com/docker/build-push-action
+      - name: Build and push docker image for ${{ matrix.gateways.binary }}
+        id: build-and-push
+        uses: docker/build-push-action@4a13e500e55cf31b7a5d59a38ab2040ab0f42f56
+        with:
+          context: ${{ matrix.containers.name }}
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ matrix.containers.image }}:${{ matrix.containers.version }},${{ matrix.containers.image }}:latest
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            VERSION=${{ matrix.containers.version }}
