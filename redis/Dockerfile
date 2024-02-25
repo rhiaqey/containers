@@ -1,8 +1,8 @@
-ARG REDIS_VERSION
+ARG VERSION
 
 FROM docker.io/bitnami/minideb:bullseye as builder
 
-ARG REDIS_VERSION
+ARG VERSION
 
 RUN apt-get update && \
     apt-get upgrade -y
@@ -21,13 +21,13 @@ RUN install_packages \
       apt-utils \
       tcl
 
-RUN git clone --depth 1 --branch ${REDIS_VERSION} https://github.com/redis/redis.git /tmp/redis-${REDIS_VERSION}
+RUN git clone --depth 1 --branch ${VERSION} https://github.com/redis/redis.git /tmp/redis-${VERSION}
 
-RUN cd /tmp/redis-${REDIS_VERSION} && \
+RUN cd /tmp/redis-${VERSION} && \
     make MALLOC=jemalloc
 
-FROM bitnami/redis:${REDIS_VERSION}
+FROM bitnami/redis:${VERSION}
 
-ARG REDIS_VERSION
+ARG VERSION
 
-COPY --from=builder --chown=1001:1001 /tmp/redis-${REDIS_VERSION}/src/redis-server /opt/bitnami/redis/bin/
+COPY --from=builder --chown=1001:1001 /tmp/redis-${VERSION}/src/redis-server /opt/bitnami/redis/bin/

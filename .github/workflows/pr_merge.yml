@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-      - adopt-ci
 
 env:
   CI: true
@@ -47,4 +46,4 @@ jobs:
           tags: ${{ matrix.containers.image }}:${{ matrix.containers.version }},${{ matrix.containers.image }}:latest
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            REDIS_VERSION=${{ matrix.containers.version }}
+            VERSION=${{ matrix.containers.version }}
