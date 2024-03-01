@@ -30,4 +30,4 @@ FROM bitnami/redis-sentinel:${VERSION}
 
 ARG VERSION
 
-COPY --from=builder --chown=1001:1001 /tmp/redis-${VERSION}/src/redis-sentinel /opt/bitnami/redis/bin/
+COPY --from=builder --chown=1000:1000 /tmp/redis-${VERSION}/src/redis-sentinel /opt/bitnami/redis/bin/
