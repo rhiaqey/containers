@@ -38,6 +38,8 @@ USER root
 RUN groupadd -g $GROUP $GROUP \
     && useradd -u $USER -ms /bin/bash -g $GROUP $USER
 
+RUN chown -R $USER:$GROUP /opt/bitnami/redis /bitnami/redis/data
+
 USER $USER
 
 COPY --from=builder --chown=$USER:$GROUP /tmp/redis-${VERSION}/src/redis-server /opt/bitnami/redis/bin/

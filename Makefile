@@ -9,6 +9,8 @@ redis:
 		-t rhiaqey/redis:dev \
 		-t rhiaqey/redis:latest \
 		-t rhiaqey/redis:${REDIS_VERSION} \
+		--progress plain \
+		--no-cache \
 		--squash
 
 .PHONY: push
@@ -25,11 +27,13 @@ redis-sentinel:
 		-t rhiaqey/redis-sentinel:dev \
 		-t rhiaqey/redis-sentinel:latest \
 		-t rhiaqey/redis-sentinel:${REDIS_VERSION} \
+		--progress plain \
+		--no-cache \
 		--squash
 
 .PHONY: caddy
 caddy:
-	docker build \
+	docker build caddy \
 		--build-arg VERSION=${CADDY_VERSION} \
 		-f caddy/Dockerfile \
 		-t rhiaqey/caddy:dev \
@@ -37,8 +41,7 @@ caddy:
 		-t rhiaqey/caddy:${CADDY_VERSION} \
 		--progress plain \
 		--no-cache \
-		--squash \
-		caddy
+		--squash
 
 .PHONY: run-caddy
 run-caddy:

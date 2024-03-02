@@ -38,6 +38,8 @@ USER root
 RUN groupadd -g $GROUP $GROUP \
     && useradd -u $USER -ms /bin/bash -g $GROUP $USER
 
+RUN chown -R $USER:$GROUP /opt/bitnami/redis-sentinel /bitnami/redis-sentinel/conf
+
 USER $USER
 
 COPY --from=builder --chown=$USER:$GROUP /tmp/redis-${VERSION}/src/redis-sentinel /opt/bitnami/redis/bin/
