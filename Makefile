@@ -29,10 +29,8 @@ redis-sentinel:
 
 .PHONY: caddy
 caddy:
-	docker buildx build \
+	docker build \
 		--build-arg VERSION=${CADDY_VERSION} \
-		--platform linux/arm64 \
-		--platform linux/amd64 \
 		-f caddy/Dockerfile \
 		-t rhiaqey/caddy:dev \
 		-t rhiaqey/caddy:latest \

@@ -10,7 +10,7 @@ RUN apt-get update && \
       ca-certificates \
       curl \
       libgomp1 \
-      libssl1.1 \
+      libssl-dev \
       procps \
       git \
       make \
@@ -29,5 +29,15 @@ RUN git clone --depth 1 --branch ${VERSION} https://github.com/redis/redis.git /
 FROM bitnami/redis:${VERSION}
 
 ARG VERSION
+ARG USER=1000
+ARG GROUP=1000
 
-COPY --from=builder --chown=1000:1000 /tmp/redis-${VERSION}/src/redis-server /opt/bitnami/redis/bin/
+USER root
+
+# Create the specified group and user, and add the user to the group
+RUN groupadd -g $GROUP $GROUP \
+    && useradd -u $USER -ms /bin/bash -g $GROUP $USER
+
+USER $USER
+
+COPY --from=builder --chown=$USER:$GROUP /tmp/redis-${VERSION}/src/redis-server /opt/bitnami/redis/bin/
