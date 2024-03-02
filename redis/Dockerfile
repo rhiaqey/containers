@@ -1,13 +1,12 @@
 ARG VERSION
 
-FROM docker.io/bitnami/minideb:bullseye as builder
+FROM docker.io/bitnami/minideb:bookworm as builder
 
 ARG VERSION
 
 RUN apt-get update && \
-    apt-get upgrade -y
-
-RUN install_packages \
+    apt-get upgrade -y && \
+    install_packages \
       ca-certificates \
       curl \
       libgomp1 \
@@ -21,9 +20,10 @@ RUN install_packages \
       apt-utils \
       tcl
 
-RUN git clone --depth 1 --branch ${VERSION} https://github.com/redis/redis.git /tmp/redis-${VERSION}
+WORKDIR /tmp
 
-RUN cd /tmp/redis-${VERSION} && \
+RUN git clone --depth 1 --branch ${VERSION} https://github.com/redis/redis.git /tmp/redis-${VERSION} && \
+    cd /tmp/redis-${VERSION} && \
     make MALLOC=jemalloc
 
 FROM bitnami/redis:${VERSION}
