@@ -2,8 +2,20 @@ ARG VERSION
 
 FROM --platform=$BUILDPLATFORM caddy:${VERSION}-builder AS builder
 
-RUN xcaddy build \
-    --with github.com/mholt/caddy-l4
+ARG TARGETPLATFORM
+
+RUN echo Building $TARGETPLATFORM on $BUILDPLATFORM
+
+RUN case "${TARGETPLATFORM}" in \
+      "linux/amd64") go_os="linux" go_arch="amd64" ;; \
+      "linux/arm64") go_os="linux" go_arch="arm64" ;; \
+      *) echo "Unsupported platform: ${TARGETPLATFORM}" ; exit 1 ;; \
+    esac \
+    # Set the GOOS and GOARCH environment variables
+    && export GOOS=${go_os} \
+    && export GOARCH=${go_arch} \
+    && xcaddy build \
+      --with github.com/mholt/caddy-l4
 
 FROM caddy:${VERSION}
 
