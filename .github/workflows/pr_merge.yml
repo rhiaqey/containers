@@ -14,9 +14,10 @@ jobs:
     strategy:
       matrix:
         containers: [
-          {name: "caddy", image: "rhiaqey/caddy", version: "2.7.6"},
-          {name: "redis", image: "rhiaqey/redis", version: "7.2.4"},
-          {name: "redis-sentinel", image: "rhiaqey/redis-sentinel", version: "7.2.4"},
+          {name: "caddy", image: "rhiaqey/caddy", version: "2.7.6", push: true},
+          {name: "redis", image: "rhiaqey/redis", version: "7.2.4", push: true},
+          {name: "redis-sentinel", image: "rhiaqey/redis-sentinel", version: "7.2.4", push: true},
+          {name: "valkey", image: "rhiaqey/valkey", version: "7.2.4", push: false},
         ]
     steps:
       - name: Checkout
@@ -50,7 +51,7 @@ jobs:
         with:
           context: ${{ matrix.containers.name }}
           platforms: linux/amd64,linux/arm64
-          push: ${{ github.event_name != 'pull_request' }}
+          push: ${{ github.event_name != 'pull_request' && matrix.container.push }}
           tags: ${{ matrix.containers.image }}:${{ matrix.containers.version }},${{ matrix.containers.image }}:latest
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
