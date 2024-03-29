@@ -1,5 +1,6 @@
 REDIS_VERSION=7.2.4
 CADDY_VERSION=2.7.6
+VALKEY_VERISON=7.2.4
 
 .PHONY: redis
 redis:
@@ -46,5 +47,17 @@ caddy:
 .PHONY: run-caddy
 run-caddy:
 	docker run -it --rm --name caddy -p 8080:8080 -p 8443:443 rhiaqey/caddy:dev
+
+.PHONY: valkey
+valkey:
+	docker build valkey \
+		--build-arg VERSION=${VALKEY_VERISON} \
+		-f valkey/Dockerfile \
+		-t rhiaqey/valkey:dev \
+		-t rhiaqey/valkey:latest \
+		-t rhiaqey/valkey:${VALKEY_VERISON} \
+		--progress plain \
+		--no-cache \
+		--squash
 
 prod: redis redis-sentinel push
