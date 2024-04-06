@@ -18,5 +18,3 @@ RUN    apt-get update \
         protobuf-compiler \
     && rm -rf /var/lib/apt/lists/* \
     && update-ca-certificates
-
-ENTRYPOINT [ "/bin/bash", "-c", "echo I am on $(uname -m)" ]
