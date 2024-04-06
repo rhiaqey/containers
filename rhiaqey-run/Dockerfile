@@ -11,7 +11,7 @@ RUN    apt-get update \
         libssl-dev \
         curl \
     && rm -rf /var/lib/apt/lists/* \
-    && update-ca-certificates \
+    && update-ca-certificates
 
 
 
