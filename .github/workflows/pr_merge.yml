@@ -18,6 +18,7 @@ jobs:
           {name: "redis", image: "rhiaqey/redis", version: "7.2.4", push: true},
           {name: "redis-sentinel", image: "rhiaqey/redis-sentinel", version: "7.2.4", push: true},
           {name: "rhiaqey-build", image: "rhiaqey/build", version: "1.0.0", push: true},
+          {name: "rhiaqey-run", image: "rhiaqey/run", version: "1.0.0", push: true},
         ]
     steps:
       - name: Checkout
