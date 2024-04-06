@@ -18,7 +18,6 @@ jobs:
           {name: "caddy", image: "rhiaqey/caddy", version: "2.7.6", push: true},
           {name: "redis", image: "rhiaqey/redis", version: "7.2.4", push: true},
           {name: "redis-sentinel", image: "rhiaqey/redis-sentinel", version: "7.2.4", push: true},
-          {name: "valkey", image: "rhiaqey/valkey", version: "7.2.4", push: false},
         ]
     steps:
       - name: Checkout
