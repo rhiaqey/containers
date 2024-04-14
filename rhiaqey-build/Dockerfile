@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM rust:1.77.1-slim-bookworm
+FROM --platform=$BUILDPLATFORM rust:1.77.2-slim-bookworm
 
 ARG TARGETPLATFORM
 
