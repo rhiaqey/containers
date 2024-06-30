@@ -1,8 +1,4 @@
-FROM --platform=$BUILDPLATFORM debian:12.5-slim
-
-ARG TARGETPLATFORM
-
-RUN echo Building $TARGETPLATFORM on $BUILDPLATFORM
+FROM debian:12.5-slim
 
 RUN    apt-get update \
     && apt-get install -y \
@@ -12,3 +8,5 @@ RUN    apt-get update \
         curl \
     && rm -rf /var/lib/apt/lists/* \
     && update-ca-certificates
+
+CMD ["/bin/bash"]

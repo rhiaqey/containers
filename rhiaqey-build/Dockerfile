@@ -1,8 +1,4 @@
-FROM --platform=$BUILDPLATFORM rust:1.79.0-slim-bookworm
-
-ARG TARGETPLATFORM
-
-RUN echo Building $TARGETPLATFORM on $BUILDPLATFORM
+FROM rust:1.79.0-slim-bookworm
 
 RUN    apt-get update \
     && apt-get install -y \
@@ -18,3 +14,5 @@ RUN    apt-get update \
         protobuf-compiler \
     && rm -rf /var/lib/apt/lists/* \
     && update-ca-certificates
+
+CMD ["/bin/bash"]

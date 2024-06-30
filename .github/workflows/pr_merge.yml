@@ -17,8 +17,8 @@ jobs:
           {name: "caddy", image: "rhiaqey/caddy", version: "2.8.4", push: true},
           # {name: "redis", image: "rhiaqey/redis", version: "7.2.5", push: true},
           # {name: "redis-sentinel", image: "rhiaqey/redis-sentinel", version: "7.2.5", push: true},
-          {name: "rhiaqey-build", image: "rhiaqey/build", version: "1.0.5", push: true},
-          {name: "rhiaqey-run", image: "rhiaqey/run", version: "1.0.5", push: true},
+          {name: "rhiaqey-build", image: "rhiaqey/build", version: "1.0.6", push: true},
+          {name: "rhiaqey-run", image: "rhiaqey/run", version: "1.0.6", push: true},
         ]
     steps:
       - name: Checkout
