@@ -17,8 +17,8 @@ jobs:
           {name: "caddy", image: "rhiaqey/caddy", version: "2.8.4", push: true},
           {name: "redis", image: "rhiaqey/redis", version: "7.2.5", push: true},
           {name: "redis-sentinel", image: "rhiaqey/redis-sentinel", version: "7.2.5", push: true},
-          {name: "rhiaqey-build", image: "rhiaqey/build", version: "1.0.3", push: true},
-          {name: "rhiaqey-run", image: "rhiaqey/run", version: "1.0.3", push: true},
+          {name: "rhiaqey-build", image: "rhiaqey/build", version: "1.0.4", push: true},
+          {name: "rhiaqey-run", image: "rhiaqey/run", version: "1.0.4", push: true},
         ]
     steps:
       - name: Checkout
@@ -51,7 +51,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ${{ matrix.containers.name }}
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm64,linux/arm64/v8
           push: ${{ github.event_name != 'pull_request' && matrix.container.push == true }}
           tags: ${{ matrix.containers.image }}:${{ matrix.containers.version }},${{ matrix.containers.image }}:latest
           labels: ${{ steps.meta.outputs.labels }}
