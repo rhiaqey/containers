@@ -22,11 +22,11 @@ RUN apt-get update && \
 
 WORKDIR /tmp
 
-RUN git clone --depth 1 --branch ${VERSION} https://github.com/valkey-io/valkey.git /tmp/valkey-${VERSION} && \
+RUN git clone --depth 1 --branch ${VERSION} https://github.com/valkey-io/valkey.git  /tmp/valkey-${VERSION} && \
     cd /tmp/valkey-${VERSION} && \
     make MALLOC=jemalloc
 
-FROM bitnami/valkey:${VERSION}
+FROM bitnami/valkey-sentinel:${VERSION}
 
 ARG VERSION
 ARG USER=1000
@@ -38,8 +38,8 @@ USER root
 RUN groupadd -g $GROUP $GROUP \
     && useradd -u $USER -ms /bin/bash -g $GROUP $USER
 
-RUN chown -R $USER:$GROUP /opt/bitnami/valkey /bitnami/valkey/data
+RUN chown -R $USER:$GROUP /opt/bitnami/valkey-sentinel /bitnami/valkey-sentinel/conf
 
 USER $USER
 
-COPY --from=builder --chown=$USER:$GROUP /tmp/valkey-${VERSION}/src/valkey-server /opt/bitnami/valkey/bin/
+COPY --from=builder --chown=$USER:$GROUP /tmp/valkey-${VERSION}/src/valkey-sentinel /opt/bitnami/valkey/bin/
