@@ -22,11 +22,11 @@ RUN apt-get update && \
 
 WORKDIR /tmp
 
-RUN git clone --depth 1 --branch ${VERSION} https://github.com/redis/redis.git /tmp/redis-${VERSION} && \
-    cd /tmp/redis-${VERSION} && \
+RUN git clone --depth 1 --branch ${VERSION} https://github.com/valkey-io/valkey.git /tmp/valkey-${VERSION} && \
+    cd /tmp/valkey-${VERSION} && \
     make MALLOC=jemalloc
 
-FROM bitnami/redis-sentinel:${VERSION}
+FROM bitnami/valkey:${VERSION}
 
 ARG VERSION
 ARG USER=1000
@@ -38,8 +38,8 @@ USER root
 RUN groupadd -g $GROUP $GROUP \
     && useradd -u $USER -ms /bin/bash -g $GROUP $USER
 
-RUN chown -R $USER:$GROUP /opt/bitnami/redis-sentinel /bitnami/redis-sentinel/conf
+RUN chown -R $USER:$GROUP /opt/bitnami/valkey /bitnami/valkey/data
 
 USER $USER
 
-COPY --from=builder --chown=$USER:$GROUP /tmp/redis-${VERSION}/src/redis-sentinel /opt/bitnami/redis/bin/
+COPY --from=builder --chown=$USER:$GROUP /tmp/redis-${VERSION}/src/valkey-server /opt/bitnami/valkey/bin/

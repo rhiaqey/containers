@@ -1,6 +1,6 @@
 ARG VERSION
 
-FROM docker.io/bitnami/minideb:bookworm as builder
+FROM docker.io/bitnami/minideb:bookworm AS builder
 
 ARG VERSION
 
