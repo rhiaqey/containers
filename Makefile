@@ -1,6 +1,6 @@
-REDIS_VERSION=7.2.4
-CADDY_VERSION=2.7.6
-VALKEY_VERISON=7.2.4
+REDIS_VERSION=7.2.5
+CADDY_VERSION=2.8.4
+VALKEY_VERSION=7.2.5
 
 .PHONY: redis
 redis:
@@ -13,12 +13,6 @@ redis:
 		--progress plain \
 		--no-cache \
 		--squash
-
-.PHONY: push
-push:
-	docker push rhiaqey/caddy:dev
-	docker push rhiaqey/redis:dev
-	docker push rhiaqey/redis-sentinel:dev
 
 .PHONY: redis-sentinel
 redis-sentinel:
@@ -51,13 +45,13 @@ run-caddy:
 .PHONY: valkey
 valkey:
 	docker build valkey \
-		--build-arg VERSION=${VALKEY_VERISON} \
+		--build-arg VERSION=${VALKEY_VERSION} \
 		-f valkey/Dockerfile \
 		-t rhiaqey/valkey:dev \
 		-t rhiaqey/valkey:latest \
-		-t rhiaqey/valkey:${VALKEY_VERISON} \
+		-t rhiaqey/valkey:${VALKEY_VERSION} \
 		--progress plain \
 		--no-cache \
 		--squash
 
-prod: redis redis-sentinel push
+prod: redis redis-sentinel

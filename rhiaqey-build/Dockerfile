@@ -1,6 +1,6 @@
-FROM rust:1.79.0-slim-bookworm
+FROM rust:1.80-slim-bookworm
 
-RUN    apt-get update \
+RUN apt-get update \
     && apt-get install -y \
         gcc-aarch64-linux-gnu \
         libc6-dev-arm64-cross \
