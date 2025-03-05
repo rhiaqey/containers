@@ -25,7 +25,8 @@ WORKDIR /tmp
 RUN git clone --depth 1 --branch ${VERSION} https://github.com/redis/redis.git /tmp/redis-${VERSION} && \
     cd /tmp/redis-${VERSION} && \
     make distclean && \
-    make MALLOC=jemalloc
+    make MALLOC=jemalloc && \
+    make test
 
 FROM bitnami/redis-sentinel:${VERSION}
 
