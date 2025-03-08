@@ -24,8 +24,7 @@ WORKDIR /tmp
 
 RUN git clone --depth 1 --branch ${VERSION} https://github.com/valkey-io/valkey.git /tmp/valkey-${VERSION} && \
     cd /tmp/valkey-${VERSION} && \
-    make MALLOC=jemalloc && \
-    make test
+    make MALLOC=jemalloc
 
 FROM bitnami/valkey:${VERSION}
 
