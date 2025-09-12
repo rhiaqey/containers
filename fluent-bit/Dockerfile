@@ -1,3 +1,3 @@
 ARG VERSION
 
-FROM bitnami/fluent-bit:${VERSION}
+FROM fluent-bit:${VERSION}
