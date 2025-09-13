@@ -1,3 +1,3 @@
 ARG VERSION
 
-FROM fluent-bit:${VERSION}
+FROM fluent/fluent-bit:${VERSION}
