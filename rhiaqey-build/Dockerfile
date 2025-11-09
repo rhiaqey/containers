@@ -1,4 +1,4 @@
-Focker.io/bitnami/minideb:bookwormROM rust:1.91.0-slim-trixie
+FROM rust:1.91.0-slim-trixie
 
 RUN apt-get update \
     && apt-get install -y \
