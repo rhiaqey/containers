@@ -20,8 +20,8 @@ jobs:
           {name: "valkey", image: "rhiaqey/valkey", version: "8.1.3", push: true},
           {name: "valkey-sentinel", image: "rhiaqey/valkey-sentinel", version: "8.1.3", push: true},
           {name: "fluent-bit", image: "rhiaqey/fluent-bit", version: "4.0.9", push: true},
-          {name: "rhiaqey-build", image: "rhiaqey/build", version: "1.0.18", push: true},
-          {name: "rhiaqey-run", image: "rhiaqey/run", version: "1.0.14", push: true},
+          {name: "rhiaqey-build", image: "rhiaqey/build", version: "1.0.19", push: true},
+          {name: "rhiaqey-run", image: "rhiaqey/run", version: "1.0.15", push: true},
         ]
     steps:
       - name: Checkout
