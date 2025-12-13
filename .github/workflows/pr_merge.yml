@@ -19,9 +19,9 @@ jobs:
           #{name: "redis-sentinel", image: "rhiaqey/redis-sentinel", version: "8.2.3", push: true},
           #{name: "valkey", image: "rhiaqey/valkey", version: "8.1.4", push: true},
           #{name: "valkey-sentinel", image: "rhiaqey/valkey-sentinel", version: "8.1.4", push: true},
-          {name: "fluent-bit", image: "rhiaqey/fluent-bit", version: "4.1.1", push: true},
-          {name: "rhiaqey-build", image: "rhiaqey/build", version: "1.0.20", push: true},
-          {name: "rhiaqey-run", image: "rhiaqey/run", version: "1.0.15", push: true},
+          {name: "fluent-bit", image: "rhiaqey/fluent-bit", version: "4.2.0", push: true},
+          {name: "rhiaqey-build", image: "rhiaqey/build", version: "1.0.21", push: true},
+          {name: "rhiaqey-run", image: "rhiaqey/run", version: "1.0.16", push: true},
         ]
     steps:
       - name: Checkout
