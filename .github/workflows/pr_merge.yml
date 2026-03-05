@@ -14,12 +14,12 @@ jobs:
     strategy:
       matrix:
         containers: [
-          {name: "caddy", image: "rhiaqey/caddy", version: "2.10.2", push: true},
+          {name: "caddy", image: "rhiaqey/caddy", version: "2.11.1", push: true},
           #{name: "redis", image: "rhiaqey/redis", version: "8.2.3", push: true},
           #{name: "redis-sentinel", image: "rhiaqey/redis-sentinel", version: "8.2.3", push: true},
           #{name: "valkey", image: "rhiaqey/valkey", version: "8.1.4", push: true},
           #{name: "valkey-sentinel", image: "rhiaqey/valkey-sentinel", version: "8.1.4", push: true},
-          {name: "fluent-bit", image: "rhiaqey/fluent-bit", version: "4.2.2", push: true},
+          {name: "fluent-bit", image: "rhiaqey/fluent-bit", version: "4.2.3", push: true},
           {name: "rhiaqey-build", image: "rhiaqey/build", version: "1.0.22", push: true},
           {name: "rhiaqey-run", image: "rhiaqey/run", version: "1.0.17", push: true},
         ]
