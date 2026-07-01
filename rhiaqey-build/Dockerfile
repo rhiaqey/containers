@@ -1,4 +1,4 @@
-FROM rust:1.94-slim-trixie
+FROM rust:1.96.1-slim-trixie
 
 RUN apt-get update \
     && apt-get install -y \
